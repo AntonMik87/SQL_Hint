@@ -1,18 +1,18 @@
-Выбор, смена базы данных
+**Выбор, смена базы данных**
 use shop(имя базы);
 
 -- создание базы данных shop
 
 CREATE SCHEMA `shop` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 
--- отобразить все базы данных
+**отобразить все базы данных**
 show databases;
 
 -- работать с указанной базой данных (после выполнения этой команды вместо `shop`.`category` можно будет писать просто category )
 
 use shop;
 
--- создание таблицы "категория товаров"
+**создание таблицы "категория товаров"**
 
 CREATE TABLE `shop`.`category` (
   
@@ -24,7 +24,7 @@ CREATE TABLE `shop`.`category` (
   
 PRIMARY KEY (`id`));
 
--- добавление нового столбца
+**добавление нового столбца**
 
 ALTER TABLE `shop`.`category`  (изменить таблицу  `имя базы` `имя таблицы`)
 
@@ -47,11 +47,11 @@ DROP DATABASE `shop`;
 ALTER TABLE `shop`.`brends` 
 RENAME TO  `shop`.`brand` ; переименование таблицы
 
--- == SELECT == --
+-- == **SELECT** == --
 -- вывести все категории товаров
 SELECT * FROM category;
 
--- == WHERE == --
+-- == **WHERE** == --
 -- вывести категорию товаров с идентификатором, равным 3
 SELECT * FROM category WHERE id = 3;
 
@@ -76,7 +76,7 @@ SELECT * FROM category WHERE alias_name IS NOT NULL;
 -- вывести категории товаров, у которых нет псевдонима
 SELECT * FROM category WHERE alias_name IS NULL;
 
-ЗАПОЛНЕНИЕ ТАБЛИЦЫ
+**ЗАПОЛНЕНИЕ ТАБЛИЦЫ**
 
 use shop;
 
@@ -84,7 +84,7 @@ INSERT INTO category (id, name, discount, alias_name) VALUES (3, 'Женская
 
 INSERT INTO category (id, name, discount, alias_name) VALUES (4, 'Мужская обувь', 15, 'mans shoes');
 
-Автоматическое добавление id номера
+**Автоматическое добавление id номера**
 ALTER TABLE `shop`. `category`
 CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
 
@@ -92,7 +92,7 @@ CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
 INSERT INTO category (name, discount) VALUES ('Шляпы', 0);
 
 
-DISTINCT, ORDER BY, LIMIT
+**DISTINCT, ORDER BY, LIMIT**
 
 -- == SELECT <столбец> == --
 -- вывести названя всех категорий товаров
@@ -166,7 +166,7 @@ INSERT INTO category (name, discount) VALUES ('Тетя Клава Company', 0);
 -- Удалить этот бренд
 DELETE FROM category WHERE id = 5;
 
-Объединение  таблиц
+**Объединение  таблиц**
 use shop;
 SELECT * FROM product;
 select * from category where id = 1 or id = 3 or id = 2;
